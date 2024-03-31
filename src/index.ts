@@ -5,6 +5,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 
 import myUserRoute from "./routes/myUserRoute";
+import myRestaurantRoute from "./routes/myRestaurantRoutes";
 
 import {v2 as cloudinary} from "cloudinary";
 
@@ -22,7 +23,8 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-app.use("/api/my/users", myUserRoute)
+app.use("/api/my/users", myUserRoute);
+app.use("/api/my/restaurant", myRestaurantRoute);
 
 app.get("/test", async (req: Request, res:Response) => {
     res.json({message: "hello!"});

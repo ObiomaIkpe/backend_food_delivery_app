@@ -12,3 +12,5 @@ const storage = multer.memoryStorage();
     })
 
 router.post("/", upload.single("imageFile"), myRestaurantController.createMyRestaurant);
+
+export default router;

@@ -16,6 +16,15 @@ const createMyRestaurant = async (req: Request, res: Response) => {
         const dataURI = `data:${image.mimetype};base64,${base64img}`;
 
         const uploadResponse = await cloudinary.v2.uploader.upload(dataURI)
+
+        const restaurant = new Restaurant(req.body);
+        restaurant.imageUrl = uploadResponse.url;
+        restaurant.user = new mongoose.Types.ObjectId(req.userId);
+
+        await restaurant.save();
+        restaurant.lastUpdated = new Date();
+        res.status(201).send(restaurant);
+
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "something went wrong!"})
