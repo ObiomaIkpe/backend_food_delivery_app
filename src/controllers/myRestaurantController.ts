@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import Restaurant from "../models/restaurant";
+import Restaurant from "../models/restaurantModel";
 import cloudinary from "cloudinary"
+import mongoose from "mongoose";
 
 
 const createMyRestaurant = async (req: Request, res: Response) => {
@@ -29,4 +30,8 @@ const createMyRestaurant = async (req: Request, res: Response) => {
         console.log(error);
         res.status(500).json({message: "something went wrong!"})
     }
+};
+
+export default {
+    createMyRestaurant
 }

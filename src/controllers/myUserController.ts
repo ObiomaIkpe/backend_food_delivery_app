@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/userModel";
 
-const createCurrentUser =async (req: Request, res: Response) => {
+const createCurrentUser = async (req: Request, res: Response) => {
     
     try {
         // 1) check if the user exists.
